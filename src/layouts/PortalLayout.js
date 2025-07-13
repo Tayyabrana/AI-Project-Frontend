@@ -20,11 +20,11 @@ const PortalLayout = ({ children }) => {
               <Sidebar />
             </div>
 
-            <div className="flex-1 bg-[#1d1d1d] ml-60 transition-all duration-[400ms]">
+            <div className="flex-1 bg-[#1d1d1d] transition-all lg:ml-60 duration-[300ms]">
               <div className="flex h-full">{children}</div>
             </div>
 
-            <div className="flex h-full min-h-[100vh] w-60 bg-[#1d1d1d]">
+            <div className="h-full min-h-[100vh] hidden xl:block w-60 bg-[#1d1d1d]">
               <AddTeamMembers />
             </div>
           </div>
