@@ -6,6 +6,8 @@ import Employees from "./Screens/Employees/Employees";
 import EmployeesAddEdit from "./Screens/Employees/EmployeesAddEdit";
 import Login from "./Screens/Login/Login";
 import SelectProject from "./Screens/NewProject/SelectProject";
+import Chat from "./Screens/Dashboard/chat";
+import Projects from "./Screens/Projects/Projects";
 
 function App() {
   return (
@@ -14,9 +16,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/users" element={<Employees />} />
-          <Route path="users/add" element={<EmployeesAddEdit />} />
-          <Route path="users/edit" element={<EmployeesAddEdit edit={true} />} />
+          <Route path="/chat" element={<Chat />} />
+          <Route path="/employees" element={<Employees />} />
+          <Route path="/projects" element={<Projects />} />
           <Route path="selectproject" element={<SelectProject edit={true} />} />
         </Routes>
       </PortalLayout>

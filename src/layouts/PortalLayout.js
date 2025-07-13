@@ -6,17 +6,19 @@ import AddTeamMembers from "../components/AddTeamMembers";
 
 const PortalLayout = ({ children }) => {
   const [showNav, setShowNav] = useState(true);
-
   const location = useLocation();
+
+  const isLogin = location.pathname.toLowerCase() === "/login";
+  const isChat = location.pathname.toLowerCase() === "/chat";
 
   return (
     <>
-      {location.pathname.toLowerCase() === "/login" ? (
+      {isLogin ? (
         children
       ) : (
         <div className="flex flex-col h-screen">
           <div className="flex flex-1">
-            <div className={` transition-all duration-[400ms] bg-[#F5F4FE]`}>
+            <div className={`transition-all duration-[400ms] bg-[#F5F4FE]`}>
               <Sidebar />
             </div>
 
@@ -24,9 +26,12 @@ const PortalLayout = ({ children }) => {
               <div className="flex h-full">{children}</div>
             </div>
 
-            <div className="h-full min-h-[100vh] hidden xl:block w-60 bg-[#1d1d1d]">
-              <AddTeamMembers />
-            </div>
+            {/* Show AddTeamMembers only on /chat route */}
+            {isChat && (
+              <div className="h-full min-h-[100vh] hidden xl:block w-60 bg-[#1d1d1d]">
+                <AddTeamMembers />
+              </div>
+            )}
           </div>
         </div>
       )}

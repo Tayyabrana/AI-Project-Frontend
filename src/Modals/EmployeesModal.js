@@ -9,7 +9,13 @@ import employeeService from "../api/services/employeeService";
 import Loading from "../components/Loading";
 import { IoMdClose } from "react-icons/io";
 
-const EmployeesModal = ({ edit = false, isOpen, onClose, trigger, setTrigger }) => {
+const EmployeesModal = ({
+  edit = false,
+  isOpen,
+  onClose,
+  trigger,
+  setTrigger,
+}) => {
   const style =
     "text-left tracking-wide text-grey-darker text-[0.7rem] font-[600] mb-[3px] ml-4";
   const [loading, setLoading] = useState(false);
@@ -105,15 +111,15 @@ const EmployeesModal = ({ edit = false, isOpen, onClose, trigger, setTrigger }) 
     } else {
       if (edit) {
         employeeService.update(data).then((res) => {
-          setTrigger(!trigger)
-          toast.success("Employee updated successfully")
+          setTrigger(!trigger);
+          toast.success("Employee updated successfully");
           navigate("/employees");
         });
       } else {
         employeeService.create(data).then((res) => {
-          setTrigger(!trigger)
-          toast.success("Employee added successfully")
-          onClose()
+          setTrigger(!trigger);
+          toast.success("Employee added successfully");
+          onClose();
           navigate("/employees");
         });
       }
@@ -127,12 +133,15 @@ const EmployeesModal = ({ edit = false, isOpen, onClose, trigger, setTrigger }) 
         <Loading />
       ) : (
         <>
-          <div className="w-[60%] mx-auto bg-white rounded-xl px-12 pt-10 pb-8 flex flex-col my-5">
-            <IoMdClose className="h-6 w-6 text-end self-end text-gray-300 hover:text-red-600 hover:cursor-pointer duration-300" onClick={onClose} />
-            <h1 className="text-center text-3xl text-primary font-[600] uppercase">
+          <div className="w-[60%] mx-auto bg-[#202020] rounded-xl px-12 pt-10 pb-8 flex flex-col my-5">
+            <IoMdClose
+              className="h-6 w-6 text-end self-end text-gray-300 hover:text-red-600 hover:cursor-pointer duration-300"
+              onClick={onClose}
+            />
+            <h1 className="text-center text-3xl text-blue-500 font-[600] uppercase">
               Add Employee
             </h1>
-            <hr className=" mb-8" />
+            <hr className=" mb-8 border-gray-600" />
             <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 lg:gap-5 lg:mb-1">
               <div>
                 <div className="w-[100%] md:mb-0">
@@ -145,10 +154,11 @@ const EmployeesModal = ({ edit = false, isOpen, onClose, trigger, setTrigger }) 
                     value={data.name}
                     onChange={(e) => handleChange(e)}
                     className={`pl-4 py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 
-                                    rounded-[9px] border-[0.7px] border-gray-300 appearance-none    ${errors["name"]
-                        ? "border-red-600"
-                        : "border-gray-300"
-                      }  
+                                    rounded-[9px] border-[0.7px] border-gray-300 appearance-none    ${
+                                      errors["name"]
+                                        ? "border-red-600"
+                                        : "border-gray-300"
+                                    }  
                 focus:outline-none focus:ring-0 focus:border-black peer`}
                     placeholder="Enter Your Name"
                   />
@@ -165,10 +175,11 @@ const EmployeesModal = ({ edit = false, isOpen, onClose, trigger, setTrigger }) 
                     name="email"
                     onChange={(e) => handleChange(e)}
                     className={`pl-4 py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px]  
-                                    ${errors["email"]
-                        ? "border-red-600"
-                        : "border-gray-300"
-                      } 
+                                    ${
+                                      errors["email"]
+                                        ? "border-red-600"
+                                        : "border-gray-300"
+                                    } 
                                     border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-black peer`}
                     placeholder="Enter Your Email "
                   />
@@ -184,8 +195,9 @@ const EmployeesModal = ({ edit = false, isOpen, onClose, trigger, setTrigger }) 
                     name="education"
                     value={data.education}
                     onChange={(e) => handleChange(e)}
-                    className={`pl-4 py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px]   ${errors["education"] ? "border-red-600" : "border-gray-300"
-                      } 
+                    className={`pl-4 py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px]   ${
+                      errors["education"] ? "border-red-600" : "border-gray-300"
+                    } 
                    border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-black peer`}
                     placeholder="Enter Your Education"
                   />
@@ -219,8 +231,9 @@ const EmployeesModal = ({ edit = false, isOpen, onClose, trigger, setTrigger }) 
                   name="phone"
                   onChange={(e) => handleChange(e)}
                   className={`pl-4 py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] 
-                     ${errors["phone"] ? "border-red-600" : "border-gray-300"
-                    } border-[0.7px]
+                     ${
+                       errors["phone"] ? "border-red-600" : "border-gray-300"
+                     } border-[0.7px]
                       border-gray-300 appearance-none  focus:outline-none focus:ring-0 focuis:border-black peer`}
                   placeholder="Enter Contact Number "
                 />
@@ -249,8 +262,9 @@ const EmployeesModal = ({ edit = false, isOpen, onClose, trigger, setTrigger }) 
                   value={data.designation}
                   name="designation"
                   onChange={(e) => handleChange(e)}
-                  className={`pl-4 py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px]    ${errors["designation"] ? "border-red-600" : "border-gray-300"
-                    } 
+                  className={`pl-4 py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px] border-[0.7px]    ${
+                    errors["designation"] ? "border-red-600" : "border-gray-300"
+                  } 
                             border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-black peer`}
                   placeholder="Enter designation "
                 />
@@ -266,10 +280,11 @@ const EmployeesModal = ({ edit = false, isOpen, onClose, trigger, setTrigger }) 
                   value={data.joining_date}
                   onChange={(e) => handleChange(e)}
                   className={`pl-4 py-[9px] px-0 w-full text-sm text-gray-900 bg-gray-50 rounded-[9px]  
-                  ${errors["joining_date"]
+                  ${
+                    errors["joining_date"]
                       ? "border-red-600"
                       : "border-gray-300"
-                    } 
+                  } 
               border-[0.7px] border-gray-300 appearance-none  focus:outline-none focus:ring-0 focus:border-black peer`}
                   placeholder="Enter date "
                 />
@@ -280,8 +295,9 @@ const EmployeesModal = ({ edit = false, isOpen, onClose, trigger, setTrigger }) 
                   value={data.gender}
                   name="gender"
                   onChange={(e) => handleChange(e)}
-                  className={`pl-4 block py-[9px] w-full text-sm bg-gray-50 rounded-[9px] border-[1px]    ${errors["gender"] ? "border-red-600" : "border-gray-300"
-                    } `}
+                  className={`pl-4 block py-[9px] w-full text-sm bg-gray-50 rounded-[9px] border-[1px]    ${
+                    errors["gender"] ? "border-red-600" : "border-gray-300"
+                  } `}
                   id="gender"
                 >
                   <option value="" disabled>
@@ -297,7 +313,7 @@ const EmployeesModal = ({ edit = false, isOpen, onClose, trigger, setTrigger }) 
             <div className="flex justify-center">
               <button
                 onClick={() => submit()}
-                className="bg-primary hover:font-bold text-white font-[600] py-2 px-[3rem] mt-4
+                className="bg-blue-500 hover:font-bold text-white font-[600] py-2 px-[3rem] mt-4
                 rounded-lg cursor-pointer"
               >
                 Submit
