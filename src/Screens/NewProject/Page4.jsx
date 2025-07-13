@@ -1,6 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Page4 = ({ setPage }) => {
+  const expectedTags = [
+    "Clean Code",
+    "Responsive Design",
+    "Fast Delivery",
+    "User Friendly UI",
+    "Cross Platform",
+    "Bug Free",
+    "Scalable Architecture",
+    "Performance Optimized",
+    "Documentation Included",
+    "Deployment Ready",
+  ];
+
+  // ✅ State to manage selected features
+  const [selected, setSelected] = useState([]);
+
+  // ✅ Toggle selection logic
+  const toggleFeature = (feature) => {
+    if (selected.includes(feature)) {
+      setSelected(selected.filter((item) => item !== feature));
+    } else {
+      setSelected([...selected, feature]);
+    }
+  };
+
   return (
     <div className="relative bg-white/5 p-6 shadow-lg w-[50%] h-[70%] rounded-3xl">
       <div className="flex flex-row justify-between items-center">
@@ -14,11 +39,24 @@ const Page4 = ({ setPage }) => {
         </div>
         <div className="text-3xl font-light text-gray-500">4/6</div>
       </div>
-      <textarea
-        type="text"
-        className="w-full justify-center bg-white/5 py-2 px-4 text-white rounded-xl min-h-[200px] max-h-[440px] focus:outline-none mt-4"
-        placeholder="Write Your Idea"
-      />
+
+      <div className="mt-6">
+        <div className="flex flex-row flex-wrap gap-3">
+          {expectedTags.map((option, index) => (
+            <div
+              key={index}
+              onClick={() => toggleFeature(option)}
+              className={`px-4 py-2 rounded-full cursor-pointer transition-all duration-300 ${
+                selected.includes(option)
+                  ? "bg-gradient-to-tr from-blue-600 to-blue-400 text-white"
+                  : "bg-white/5 text-gray-300"
+              }`}
+            >
+              {option}
+            </div>
+          ))}
+        </div>
+      </div>
       <div className="absolute bottom-6 left-6">
         <button
           onClick={() => setPage(3)}
