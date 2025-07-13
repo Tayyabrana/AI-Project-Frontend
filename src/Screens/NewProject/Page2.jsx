@@ -12,7 +12,7 @@ const Page2 = ({ setPage }) => {
             Give your project a clear name and describe what it's about.
           </h6>
         </div>
-        <div className="text-3xl font-light text-gray-500">2/6</div>
+        <div className="text-3xl font-light text-gray-500">2/7</div>
       </div>
       <div className="flex flex-col items-center mt-10 gap-2">
         <label className="text-left w-full text-white text-lg">

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaCheck } from "react-icons/fa6";
 
-const Page6 = ({ setPage }) => {
+const Page7 = ({ setPage }) => {
   const navigate = useNavigate();
 
   const [selected, setSelected] = useState(null);
@@ -33,7 +33,7 @@ const Page6 = ({ setPage }) => {
             Do you want this project urgently or let AI optimize timelines?
           </h6>
         </div>
-        <div className="text-3xl font-light text-gray-500">6/7</div>
+        <div className="text-3xl font-light text-gray-500">7/7</div>
       </div>
 
       <div className="flex w-full flex-col mt-10 gap-4">
@@ -61,7 +61,7 @@ const Page6 = ({ setPage }) => {
 
       <div className="absolute bottom-6 left-6">
         <button
-          onClick={() => setPage(5)}
+          onClick={() => setPage(6)}
           className="bg-gradient-to-tr from-blue-600 to-blue-300 px-8 py-2 rounded-full text-white hover:bg-gradient-to-br"
         >
           Back
@@ -69,7 +69,7 @@ const Page6 = ({ setPage }) => {
       </div>
       <div className="absolute bottom-6 right-6">
         <button
-          onClick={() => setPage(7)}
+          onClick={() => navigate("/users")}
           className="bg-gradient-to-tr from-blue-600 to-blue-300 px-8 py-2 rounded-full text-white hover:bg-gradient-to-br"
         >
           Done
@@ -79,4 +79,4 @@ const Page6 = ({ setPage }) => {
   );
 };
 
-export default Page6;
+export default Page7;
