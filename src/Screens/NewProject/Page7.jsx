@@ -1,24 +1,48 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaCheck } from "react-icons/fa6";
+import { BsStars } from "react-icons/bs";
 
 const Page7 = ({ setPage }) => {
   const navigate = useNavigate();
 
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState([]);
 
-  const options = [
+  const toggleSelect = (index) => {
+    if (selected.includes(index)) {
+      setSelected(selected.filter((i) => i !== index));
+    } else {
+      setSelected([...selected, index]);
+    }
+  };
+
+  const developers = [
     {
-      label: "Urgent",
-      description: "faster delivery, higher resource load",
-      value: "urgent",
-      color: "text-red-400",
+      name: "Haseeb",
+      stack: "Frontend Developer",
     },
     {
-      label: "Flexible",
-      description: "balanced timeline, lower cost",
-      value: "flexible",
-      color: "text-green-400",
+      name: "Areeb",
+      stack: "Backend Developer",
+    },
+    {
+      name: "Tayyab",
+      stack: "Fullstack Developer",
+    },
+    {
+      name: "Fatima",
+      stack: "Mobile App Developer",
+    },
+    {
+      name: "Usama",
+      stack: "Backend Developer",
+    },
+    {
+      name: "Zainab",
+      stack: "Frontend Developer",
+    },
+    {
+      name: "Ali",
+      stack: "DevOps Engineer",
     },
   ];
 
@@ -27,36 +51,36 @@ const Page7 = ({ setPage }) => {
       <div className="flex flex-row justify-between items-center">
         <div>
           <h1 className="text-blue-400 text-3xl font-medium">
-            Timeline Preference
+            Team Assignment
           </h1>
           <h6 className="text-gray-300 mt-2">
-            Do you want this project urgently or let AI optimize timelines?
+            Assign team members or let AI auto assign
           </h6>
         </div>
         <div className="text-3xl font-light text-gray-500">7/7</div>
       </div>
 
-      <div className="flex w-full flex-col mt-10 gap-4">
-        {options.map((option, index) => (
-          <div
-            key={index}
-            onClick={() => setSelected(option.value)}
-            className={`flex flex-row w-full justify-between items-center px-6 py-2 rounded-full cursor-pointer transition-all
-              ${
-                selected === option.value
-                  ? "bg-gradient-to-tr from-blue-600 to-blue-400 text-white"
-                  : "bg-white/5 text-gray-400"
+      <div className="max-h-[70%] overflow-auto mt-10 w-full">
+        <div className="grid grid-cols-3 w-full gap-4">
+          {developers.map((option, index) => (
+            <div
+              key={index}
+              onClick={() => toggleSelect(index)}
+              className={`cursor-pointer p-4 rounded-lg transition-all duration-200 ${
+                selected.includes(index)
+                  ? "bg-white text-black"
+                  : "bg-white/5 text-white"
               }`}
-          >
-            <p>
-              <span className={`${!selected ? option.color : ""}`}>
-                {option.label}
-              </span>{" "}
-              {option.description}
-            </p>
-            {selected === option.value && <FaCheck />}
-          </div>
-        ))}
+            >
+              <h1 className="text-xl font-medium">{option.name}</h1>
+              <p className="text-md text-gray-400">{option.stack}</p>
+            </div>
+          ))}
+        </div>
+        <button className="flex flex-row items-center gap-2 px-4 py-2 rounded-md text-black bg-white mt-10">
+          <BsStars />
+          <p>Auto Assign</p>
+        </button>
       </div>
 
       <div className="absolute bottom-6 left-6">
